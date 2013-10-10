@@ -139,7 +139,7 @@ int main() {
 			flag = treap.erase(x);
 			if (flag) tot--;
 		}
-		if (!flag) {
+		if (!flag || tot == 0) {
 			cout << "Wrong!" << endl;
 			continue;
 		}
@@ -148,6 +148,10 @@ int main() {
 		} else {
 			int k = tot / 2;
 			LL res = (LL)treap.getKth(k) + treap.getKth(k + 1);
+			if (res == -1) {
+				cout << -0.5 << endl;
+				continue;
+			}
 			if (res % 2 == 0) cout << res / 2 << endl;
 			else {
 				cout << res / 2 << ".5" << endl;
