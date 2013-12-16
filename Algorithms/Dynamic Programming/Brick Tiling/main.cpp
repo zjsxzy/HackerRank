@@ -90,13 +90,14 @@ void dfs(int dep, int s1, int s2, int s3, int current) {
 	}
 }
 
+char str[10];
 int main() {
 	int ts;
 	scanf("%d", &ts);
 	while (ts--) {
+		memset(state, 0, sizeof(state));
 		scanf("%d%d", &n, &m);
 		for (int i = 1; i <= n; i++) {
-			char str[8];
 			scanf("%s", str);
 			for (int j = 0; j < m; j++) {
 				if (str[j] == '#') {
@@ -104,7 +105,6 @@ int main() {
 				}
 			}
 		}
-		state[n + 1] = 0;
 		if (n == 1) {
 			if (state[1] == (1 << m) - 1) puts("1");
 			else puts("0");
