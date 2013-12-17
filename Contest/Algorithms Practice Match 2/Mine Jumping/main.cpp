@@ -41,7 +41,7 @@ int main() {
 			}
 		}
 		LL ret = 0;
-		for (int i = C; i + B > C && i >= 1; i--)
+		for (int i = C; i + B > C && i >= 0; i--)
 			ret += dp[i];
 		cout << ret << endl;
 	}
