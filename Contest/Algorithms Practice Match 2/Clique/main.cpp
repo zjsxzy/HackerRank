@@ -21,16 +21,12 @@ using namespace std;
 #define FOREACH(e,x) for(__typeof(x.begin()) e=x.begin();e!=x.end();++e)
 typedef long long LL;
 
-int comb(int n) {
-	return n < 2 ? 0 : n * (n - 1) / 2;
-}
-
 int calc(int m, int n) {
-	int sz = n / m, r = n % m;
-	int most = comb(m) * sz + comb(r);
-	most += comb(sz) * m * (m - 1);
-	most += r * (m - 1) * sz;
-	return most;
+	int g1 = n % m;
+	int g2 = m - g1;
+	int sz1 = n / m + 1;
+	int sz2 = n / m;
+	return g1 * sz1 * g2 * sz2 + g1 * (g1 - 1) * sz1 * sz1 / 2 + g2 * (g2 - 1) * sz2 * sz2 / 2;
 }
 
 int main() {
@@ -40,14 +36,13 @@ int main() {
 		int n, k;
 		scanf("%d%d", &n, &k);
 		int lo = 1, hi = n + 1, ret = -1;
-		while (lo <= hi) {
-			int mid = (lo + hi) >> 1;
-			if (calc(mid, n) >= k) {
-				ret = mid;
-				hi = mid - 1;
-			} else lo = mid + 1;
+		while (lo + 1 < hi) {
+			int mid = lo + (hi - lo) / 2;
+			if (calc(mid, n) < k) {
+				lo = mid;
+			} else hi = mid;
 		}
-		printf("%d\n", ret);
+		printf("%d\n", hi);
 	}
 	return 0;
 }
