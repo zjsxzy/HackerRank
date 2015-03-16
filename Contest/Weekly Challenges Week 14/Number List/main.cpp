@@ -25,10 +25,10 @@ typedef long long LL;
 
 const int MAXN = 200000 + 5;
 int n, K;
-int A[MAXN], L[MAXN], R[MAXN];
+int A[MAXN];
 int main() {
 #ifndef ONLINE_JUDGE
-	freopen("in.txt", "r", stdin);
+	freopen("input05.txt", "r", stdin);
 #endif
 	int ts;
 	scanf("%d", &ts);
@@ -36,24 +36,15 @@ int main() {
 		scanf("%d%d", &n, &K);
 		for (int i = 1; i <= n; i++)
 			scanf("%d", &A[i]);
-		A[0] = A[n + 1] = INT_MAX;
+		LL ret = (LL)n * (n + 1) / 2;
 		for (int i = 1; i <= n; i++) {
-			L[i] = i;
-			while (A[i] > A[L[i] - 1]) {
-				L[i] = L[L[i] - 1];
+			if (A[i] > K) continue;
+			int cnt = 0;
+			while (i <= n && A[i] <= K) {
+				i++;
+				cnt++;
 			}
-		}
-		for (int i = n; i >= 1; i--) {
-			R[i] = i;
-			while (A[i] > A[R[i] + 1]) {
-				R[i] = R[R[i] + 1];
-			}
-		}
-		LL ret = 0;
-		for (int i = 1; i <= n; i++) {
-			if (A[i] > K) {
-				ret += (LL)(i - L[i] + 1) * (R[i] - i + 1);
-			}
+			ret -= (LL)cnt * (cnt + 1) / 2;
 		}
 		cout << ret << endl;
 	}
