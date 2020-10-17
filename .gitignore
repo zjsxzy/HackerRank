@@ -1,4 +1,5 @@
-*.exe
-*.out
 *.in
 *.txt
+*.out
+a.out.dSYM/
+.vscode/
