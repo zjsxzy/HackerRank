@@ -28,7 +28,7 @@ int main() {
         if (liked > 0) shared = liked * 3;
         liked = shared / 2;
         cum += liked;
-        cout << shared << " " << liked << " " << cum << endl;
+        // cout << shared << " " << liked << " " << cum << endl;
     }
     cout << cum << endl;
     return 0;
