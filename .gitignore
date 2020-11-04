@@ -1,5 +1,6 @@
 *.in
 *.txt
 *.out
+*.exe
 a.out.dSYM/
 .vscode/
