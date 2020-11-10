@@ -39,6 +39,7 @@ void solve() {
     for (int i = 0; i <= n; i++) {
         dp[i][0] = 0;
     }
+
     dp[1][0] = -a[1] * k; // give a[1] to lu
     dp[1][1] = -a[1] * (n - k); // give a[1] to li
     for (int i = 2; i <= n; i++) {
@@ -61,6 +62,7 @@ void solve() {
                     dp[i][j] = dp[i - 1][j - 1] + temp;
                 }
             }
+
         }
     }
     cout << dp[n][k] << endl;
