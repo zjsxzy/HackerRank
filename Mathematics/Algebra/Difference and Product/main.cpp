@@ -14,22 +14,14 @@ void solve() {
 		cout << 4 << endl;
 		return;
 	}
-	if (p < 0) {
-		sign = -1;
-		p = sign * p;
-	}
-	int res = 0;
-	for (int a = 1; a <= (int)sqrt(p); a++) {
-		if (p % a == 0) {
-			int b = p / a;
-			if (abs(a - sign * b) == d) {
-				res++;
-				if (a != sign * b) res++;
-			}
-		}
-	}
-	if (sign == 1) res *= 2;
-	cout << res << endl;
+    long long t = (long long)d * d + 4LL * p;
+    if ((long long)sqrt(t) * (long long)sqrt(t) == t) {
+        int res = 2;
+        if (d && t) res += 2;
+        cout << res << endl;
+    } else {
+        cout << 0 << endl;
+    }
 }
 
 int main() {
@@ -39,4 +31,4 @@ int main() {
 		solve();
 	}
 	return 0;
-} 
+}
