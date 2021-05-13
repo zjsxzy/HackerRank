@@ -6,6 +6,16 @@ using namespace std;
 typedef long long LL;
 
 void solve() {
+	int v, n;
+	cin >> v >> n;
+	for (int i = 0; i < n; i++) {
+		int x;
+		cin >> x;
+		if (v == x) {
+			cout << i << endl;
+			return;
+		}
+	}
 }
 
 int main() {
