@@ -21,9 +21,6 @@ void solve() {
         left[i] = (stk.empty() ? -1 : stk.top());
         stk.push(i);
     }
-    for (int i = 0; i < n; i++) {
-        cout << i << " " << left[i] << endl;
-    }
     stk = stack<int>();
     for (int i = n - 1; i >= 0; i--) {
         while (!stk.empty() && heights[stk.top()] >= heights[i]) {
